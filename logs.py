@@ -1,9 +1,10 @@
 import boto3
 import time
 
-groupName = 'arc-ng.mtvnservices.com/production/scheduling'
+groupName = 'arc-ng.mtvnservices.com/production/casl-migration'
 
-logsClient = boto3.client('logs')
+session = boto3.Session(profile_name='saml')
+logsClient = session.client('logs')
 
 
 def get_last_stream_name():
