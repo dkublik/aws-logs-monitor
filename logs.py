@@ -1,7 +1,16 @@
 import boto3
 import time
+import sys
 
-groupName = 'arc-ng.mtvnservices.com/production/casl-migration'
+
+baseGroupName = 'arc-ng.mtvnservices.com/production/'
+serviceName = 'casl-migration'
+
+if (len(sys.argv) > 1):
+    serviceName = sys.argv[1]
+
+groupName = 'arc-ng.mtvnservices.com/production/' + serviceName
+print('---- logs for' + groupName)
 
 session = boto3.Session(profile_name='saml')
 logsClient = session.client('logs')
